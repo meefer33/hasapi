@@ -1,9 +1,9 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
-import auth from  './auth/auth'
-
 dotenv.config();
 const app = express();
+import auth from  './auth/auth'
+
 const port = process.env.PORT || 3000;
 app.use(express.json());
 

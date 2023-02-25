@@ -1,18 +1,16 @@
 import { Request, Response } from "express";
 import { router } from "../utils";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { gql } from "graphql-request";
 import { client } from "../client";
 import { generateJWT } from "../jwt";
 
 router.post("/auth/register", async (req: Request, res: Response) => {
   const { email, password } = req.body as Record<string, string>;
+  console.log(password)
+  const newPass = await bcrypt.hash(password,8)
 
   // In production app, you would check if user is already registered
-  // We skip that in this tutorial for the sake of time
-
-  // We insert the user using a mutation
-  // Note that we salt and hash the password using bcrypt
   const { insert_user_one } = await client.request(
     gql`
       mutation registerUser($user: user_insert_input!) {
@@ -24,12 +22,25 @@ router.post("/auth/register", async (req: Request, res: Response) => {
     {
       user: {
         email,
-        password: await bcrypt.hash(password, 10),
+        password: newPass,
       },
     }
   );
 
   const { id: userId } = insert_user_one;
+
+  const tokenContents = {
+    sub: userId,
+    iat: Date.now() / 1000,
+    iss: 'https://api.apps33.dev',
+    "https://hasura.io/jwt/claims": {
+      "x-hasura-allowed-roles": ["user"],
+      "x-hasura-user-id": userId,
+      "x-hasura-default-role": "user",
+      "x-hasura-role": "user"
+    },
+    exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60)
+  }
 
   res.send({
     token: generateJWT({
