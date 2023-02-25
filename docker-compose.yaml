@@ -2,10 +2,5 @@ version: "3"
 services:
   hasura-auth:
     image: nhost/hasura-auth:latest
-    env_file:
-      - .env
-    environment:
-      HASURA_GRAPHQL_DATABASE_URL: ${HASURA_GRAPHQL_DATABASE_URL}
-      HASURA_GRAPHQL_GRAPHQL_URL: ${HASURA_GRAPHQL_GRAPHQL_URL}
     ports:
       - '4000:4000'
