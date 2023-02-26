@@ -72,7 +72,7 @@ console.log('email',email)
   console.log('user',users)
   users = users[0];
 
-  if (!user) {
+  if (!users) {
     res.sendStatus(401);
     return;
   }
