@@ -9,12 +9,12 @@ router.post("/auth/register", async (req: Request, res: Response) => {
   const { email, password } = req.body as Record<string, string>;
   console.log(password)
   const newPass = await bcrypt.hash(password,8)
-
+  console.log(password)
   // In production app, you would check if user is already registered
   const { insert_users_one } = await client.request(
     gql`
       mutation ($email: String!, $password: String!) {
-        insert_users_one(object: $users) {
+        insert_users_one(object: {email: $email, password: $password}) {
           id
         }
       }
