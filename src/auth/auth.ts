@@ -26,7 +26,7 @@ router.post("/auth/register", async (req: Request, res: Response) => {
   );
 
   const { id: userId } = insert_users_one;
-
+console.log(insert_users_one,userId)
   const tokenContents = {
     sub: userId,
     iat: Date.now() / 1000,
