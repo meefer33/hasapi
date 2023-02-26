@@ -13,7 +13,7 @@ router.post("/auth/register", async (req: Request, res: Response) => {
   // In production app, you would check if user is already registered
   const { insert_users_one } = await client.request(
     gql`
-      mutation registerUsers($users: users_insert_input!) {
+      mutation {
         insert_users_one(object: $users) {
           id
         }
