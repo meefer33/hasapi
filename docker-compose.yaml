@@ -3,6 +3,3 @@ services:
   app:
     image: ghcr.io/logto-io/logto:prerelease
     entrypoint: ["sh", "-c", "npm run cli db seed -- --swe && npm start"]
-    ports:
-      - 3001:3001
-      - 3002:3002
