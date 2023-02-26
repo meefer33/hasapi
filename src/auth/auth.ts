@@ -13,8 +13,8 @@ router.post("/auth/register", async (req: Request, res: Response) => {
   // In production app, you would check if user is already registered
   const { insert_user_one } = await client.request(
     gql`
-      mutation registerUser($user: user_insert_input!) {
-        insert_user_one(object: $user) {
+      mutation registerUsers($user: user_insert_input!) {
+        insert_users_one(object: $user) {
           id
         }
       }
@@ -58,7 +58,7 @@ router.post("/auth/login", async (req: Request, res: Response) => {
 
   let { user } = await client.request(
     gql`
-      query getUserByEmail($email: String!) {
+      query getUsersByEmail($email: String!) {
         user(where: { email: { _eq: $email } }) {
           id
           password
