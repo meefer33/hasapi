@@ -69,7 +69,7 @@ console.log('email',email)
   );
 
   // Since we filtered on a non-primary key we got an array back
-  console.log('user',user[0])
+  console.log('user',user)
   user = user[0];
 
   if (!user) {
