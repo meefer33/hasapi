@@ -69,7 +69,7 @@ router.post("/auth/login", async (req: Request, res: Response) => {
   );
 
   // Since we filtered on a non-primary key we got an array back
-  console.log(user)
+  console.log('user',user)
   //user = user[0];
 
   if (!user) {
