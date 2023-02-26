@@ -54,7 +54,7 @@ console.log(insert_users_one,userId)
 router.post("/auth/login", async (req: Request, res: Response) => {
   const { email, password } = req.body as Record<string, string>;
 console.log('email',email)
-  let user = await client.request(
+  let {users} = await client.request(
     gql`
       query ($email: String!) {
         users(where: { email: { _eq: $email } }) {
@@ -69,8 +69,8 @@ console.log('email',email)
   );
 
   // Since we filtered on a non-primary key we got an array back
-  console.log('user',user)
-  user = user[0];
+  console.log('user',users)
+  users = users[0];
 
   if (!user) {
     res.sendStatus(401);
