@@ -78,7 +78,7 @@ console.log('email',email)
   }
 
   // Check if password matches the hashed version
-  const passwordMatch = await bcrypt.compare(password, user.password);
+  const passwordMatch = await bcrypt.compare(password, users.password);
 console.log('hello',passwordMatch)
   if (passwordMatch) {
     res.send({
@@ -86,7 +86,7 @@ console.log('hello',passwordMatch)
         defaultRole: "user",
         allowedRoles: ["user"],
         otherClaims: {
-          "X-Hasura-User-Id": user.id,
+          "X-Hasura-User-Id": users.id,
         },
       }),
     });
