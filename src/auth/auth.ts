@@ -56,7 +56,7 @@ router.post("/auth/login", async (req: Request, res: Response) => {
 
   let { user } = await client.request(
     gql`
-      query getUsersByEmail($email: String!) {
+      query {
         users(where: { email: { _eq: $email } }) {
           id
           password
