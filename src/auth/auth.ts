@@ -79,7 +79,7 @@ router.post("/auth/login", async (req: Request, res: Response) => {
 
   // Check if password matches the hashed version
   const passwordMatch = await bcrypt.compare(password, user.password);
-
+console.log('hello',passwordMatch)
   if (passwordMatch) {
     res.send({
       token: generateJWT({
