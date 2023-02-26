@@ -56,7 +56,7 @@ router.post("/auth/login", async (req: Request, res: Response) => {
 
   let { user } = await client.request(
     gql`
-      query {
+      query ($email: String!) {
         users(where: { email: { _eq: $email } }) {
           id
           password
@@ -70,7 +70,7 @@ router.post("/auth/login", async (req: Request, res: Response) => {
 
   // Since we filtered on a non-primary key we got an array back
   console.log(user)
-  user = user[0];
+  //user = user[0];
 
   if (!user) {
     res.sendStatus(401);
