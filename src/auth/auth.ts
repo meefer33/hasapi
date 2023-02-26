@@ -54,7 +54,7 @@ console.log(insert_users_one,userId)
 router.post("/auth/login", async (req: Request, res: Response) => {
   const { email, password } = req.body as Record<string, string>;
 console.log('email',email)
-  let { user } = await client.request(
+  const user = await client.request(
     gql`
       query ($email: String!) {
         users(where: { email: { _eq: $email } }) {
