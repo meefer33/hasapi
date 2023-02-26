@@ -20,7 +20,7 @@ router.post("/auth/register", async (req: Request, res: Response) => {
       }
     `,
     {
-      user: {
+      users: {
         email,
         password: newPass,
       },
