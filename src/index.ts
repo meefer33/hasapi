@@ -15,7 +15,7 @@ app.get('/auth', (request, response) => {
   })
 })
 
-//app.use(auth)
+app.use(auth)
 
 app.listen(port, () => {
   console.log(`Auth server running on port ${port}.`)
