@@ -7,8 +7,9 @@ import auth from './auth/auth'
 const port = process.env.PORT || 3000
 app.use(express.json())
 
-app.get('/auth', (req, res) => {
-  res.send({
+app.get('/auth', (request, response) => {
+  console.log('hit')
+  response.send({
     'X-Hasura-User-Id': '25',
     'X-Hasura-Role': 'user',
   })
