@@ -1,18 +1,21 @@
-import express, { Request, Response } from "express";
-import dotenv from "dotenv";
-dotenv.config();
-const app = express();
-import auth from  './auth/auth'
+import express, { Request, Response } from 'express'
+import dotenv from 'dotenv'
+dotenv.config()
+const app = express()
+import auth from './auth/auth'
 
-const port = process.env.PORT || 3000;
-app.use(express.json());
+const port = process.env.PORT || 3000
+app.use(express.json())
 
 app.get('/auth', (req, res) => {
-  res.send('Webhooks are running');
-});
+  res.send({
+    'X-Hasura-User-Id': '25',
+    'X-Hasura-Role': 'user',
+  })
+})
 
 app.use(auth)
 
 app.listen(port, () => {
-  console.log(`Auth server running on port ${port}.`);
-});
+  console.log(`Auth server running on port ${port}.`)
+})
