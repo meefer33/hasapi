@@ -11,10 +11,16 @@ app.get('/auth', (request, response) => {
   console.log('hit')
   const token = request.get('Authorization');
   console.log('token',token)
-  response.json({
-    'X-Hasura-User-Id': '25',
-    'X-Hasura-Role': 'user',
-  })
+  if(token){
+    response.json({
+      'X-Hasura-User-Id': '25',
+      'X-Hasura-Role': 'user',
+    })
+  }else{
+    response.json({
+      'X-Hasura-Role': 'public',
+    })
+  }
 })
 
 app.use(auth)
