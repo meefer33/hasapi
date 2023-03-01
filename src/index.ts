@@ -7,6 +7,10 @@ import auth from  './auth/auth'
 const port = process.env.PORT || 3000;
 app.use(express.json());
 
+app.get('/auth', (req, res) => {
+  res.send('Webhooks are running');
+});
+
 app.use(auth)
 
 app.listen(port, () => {
