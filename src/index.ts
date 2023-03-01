@@ -9,7 +9,7 @@ app.use(express.json())
 
 app.get('/auth', (request, response) => {
   console.log('hit')
-  response.send({
+  response.json({
     'X-Hasura-User-Id': '25',
     'X-Hasura-Role': 'user',
   })
