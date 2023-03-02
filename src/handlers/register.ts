@@ -19,7 +19,7 @@ const execute = async (variables:any, reqHeaders:any) => {
     "http://hasapi.apps33.dev/v1/graphql",
     {
       method: 'POST',
-      headers: reqHeaders || {},
+      headers: {'x-hasura-admin-secret':'MHy3KBZRTmxCoL1JlEm0rINg'},
       body: JSON.stringify({
         query: HASURA_OPERATION,
         variables
