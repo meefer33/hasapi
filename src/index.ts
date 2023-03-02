@@ -10,7 +10,7 @@ app.use(express.json())
 app.get('/auth', (request, response) => {
   console.log('hit')
   const token = request.get('Authorization');
-  console.log('token',token,request)
+  console.log('token',token)
   if(token){
     response.json({
       'X-Hasura-User-Id': '25',
