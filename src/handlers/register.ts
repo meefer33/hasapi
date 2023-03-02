@@ -45,8 +45,9 @@ const handler = async (req:Request, res:Response) => {
   // if Hasura operation errors, then throw error
   if (errors) {
     return res.status(400).json({
-      message: errors.message
-    })
+        "message": "got an error",
+        "extensions": errors.message
+      })
   }
 
   const token = generateJWT({
