@@ -46,7 +46,7 @@ const handler = async (req:Request, res:Response) => {
   if (errors) {
     return res.status(400).json({
         "message": "got an error",
-        "extensions": errors.message
+        "extensions": errors
       })
   }
 
