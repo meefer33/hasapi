@@ -38,7 +38,7 @@ const handler = async (req:Request, res:Response) => {
 
   // run some business logic
   let hashedPassword = await bcrypt.hash(password, 10);
-
+console.log(req.headers)
   // execute the Hasura operation
   const { data, errors } = await execute({ email, password: hashedPassword }, req.headers);
 
