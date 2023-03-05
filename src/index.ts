@@ -38,6 +38,7 @@ app.all('*', function (req, res) {
   })
 })
 
+
 app.listen(port, () => {
   console.log(`Auth server running on port ${port}.`)
 })
