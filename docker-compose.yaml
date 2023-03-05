@@ -1,5 +1,14 @@
-version: "3.9"
+version: "3"
 services:
-  app:
-    image: ghcr.io/logto-io/logto:prerelease
-    entrypoint: ["sh", "-c", "npm run cli db seed -- --swe && npm start"]
+  node:
+    image: "backend"
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /app
+    restart: always
+    ports:
+     - 3000:3000
+    volumes:
+      # - /app/node_modules
+      - .:/app
